@@ -1,0 +1,31 @@
+<div>
+    <pre id="codigo">Aquí va tu código o texto que deseas copiar</pre>
+    <button onclick="copiarTexto()">Copiar</button>
+</div>
+
+<script>
+function copiarTexto() {
+    // Obtén el texto del elemento <pre>
+    var codigo = document.getElementById("codigo").innerText;
+
+    // Crea un elemento temporal de entrada de texto
+    var inputTemporal = document.createElement("textarea");
+    inputTemporal.value = codigo;
+
+    // Añade el elemento al cuerpo
+    document.body.appendChild(inputTemporal);
+
+    // Selecciona el contenido del textarea
+    inputTemporal.select();
+    inputTemporal.setSelectionRange(0, 99999); // Para dispositivos móviles
+
+    // Copia el texto al portapapeles
+    document.execCommand("copy");
+
+    // Elimina el elemento temporal
+    document.body.removeChild(inputTemporal);
+
+    // Opcional: muestra una alerta o mensaje indicando que se ha copiado
+    alert("Texto copiado al portapapeles");
+}
+</script>
